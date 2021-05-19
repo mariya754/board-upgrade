@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+  <div class="post-entry">
+    <h2>{{ bb.title }}</h2>
+    <p>{{ bb.body }}</p>
+    
+  </div>
+  <p class="font-italic text-right"> {{ bb.author }}</p>
+  {% if ais %}
+  <div class="d-flex justify-content-between flex-wrap mt-5">{% for ai in ais %}
+      <div>
+          <img class="additional-image" src="{{ ai.image.url }}">
+      </div>
+      {% endfor %}
+
+  </div>
+  {% endif %}
+
+  {% if comments %}
+<div class="mt-5">
+    {% for comment in comments %}
+    <div class="my-2 p-2 border">
+        <h5>
+            {{ comment.author }}
+        </h5>
+        <p>{{ comment.content }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}
