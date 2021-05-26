@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+Изменение объявления - Профиль пользователя
+{% endblock %}
+
+{% block content %}
+
+<h2>Изменение объявления</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form layout='horizontal' %}
+    {% bootstrap_formset formset layout='horizontal' %}
+    {% buttons submit='Изменить' %} {% endbuttons %}
+</form>
+
+{% endblock %}

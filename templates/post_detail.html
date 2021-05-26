@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% load bootstrap4 %}
 
 {% block content %}
@@ -18,7 +18,10 @@
 
   </div>
   {% endif %}
-
+  <h4 class="mt-5">Новый комментарий</h4>
+  <form method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form layout='horizontal' %} {% buttons submit='Добавить комментарий' %}{% endbuttons %}
   {% if comments %}
 <div class="mt-5">
     {% for comment in comments %}
