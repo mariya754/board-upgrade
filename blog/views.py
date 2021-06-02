@@ -221,13 +221,12 @@ def change(request, pk):
    return render(request, 'post_change.html', context)
 
 
-# def profile_delete(request, pk):
-#     bb = get_object_or_404(Bb, pk=pk)
-#     if request.method == 'POST':
-#         bb.delete()
-#         messages.add_message(request, messages.SUCCESS, 'Объявление удалено')
-#         return redirect('main:home')
-#     else:
-
-#         context = {'bb': bb}
-#         return render(request, 'main/profile_bb_delete.html', context)
+def delete(request, pk):
+    bb = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        bb.delete()
+        messages.add_message(request, messages.SUCCESS, 'Объявление удалено')
+        return redirect('home')
+    else:
+        context = {'bb': bb}
+        return render(request, 'post_delete.html', context)

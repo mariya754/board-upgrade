@@ -1,11 +1,11 @@
 from django.urls import path
  
-from .views import BlogListView, BlogDetailView, detail, change # новое изменение
+from .views import BlogListView, BlogDetailView, detail, change, delete
  
 urlpatterns = [
     path('post/change/<int:pk>/', change, name='post_change'),
-   # path('post/delete', DeleteUserView.as_view(), name = 'profile_delete'),
-    path('post/<int:pk>/', detail, name='post_detail'), # новое изменение
+    path('post/delete/<int:pk>/', delete, name ='post_delete'),
+    path('post/<int:pk>/', detail, name='post_detail'), 
     path('', BlogListView.as_view(), name='home'),
 ]
 

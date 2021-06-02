@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+Удаление объявления 
+{% endblock %}
+
+{% block content %}
+
+<h2>Удаление объявления</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% buttons submit='Удалить' %} {% endbuttons %}
+</form>
+
+{% endblock %}

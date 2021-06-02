@@ -18,7 +18,9 @@
     
   </div>
   {% endif %}
+  
   <p class="text-left"> <a href="{% url 'post_change' pk=bb.pk %}">{% buttons submit='Изменить данные поста' %}{% endbuttons %}</a>
+  <p class="text-left"> <a href="{% url 'post_delete' pk=bb.pk %}">{% buttons submit='Удалить пост' %}{% endbuttons %}</a>
   <h4 class="mt-5">Новый комментарий</h4>
   <form method="POST">
       {% csrf_token %}
