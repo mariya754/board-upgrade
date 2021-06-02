@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django import forms
 from django.forms import inlineformset_factory
 from django.contrib import messages
-
+from django.shortcuts import redirect
 
 from .models import Post, AdditionalImage, Comment
 from .forms import  PostForm, AIFormSet, CommentForm
@@ -204,7 +204,7 @@ def detail(request, pk):
 
 
 def change(request, pk):
-   bb = get_object_or_404(Bb, pk=pk)
+   bb = get_object_or_404(Post, pk=pk)
    if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=bb)
         if form.is_valid():
@@ -213,13 +213,12 @@ def change(request, pk):
              if formset.is_valid():
                  formset.save()
                  messages.add_message(request, messages.SUCCESS, 'Объявление изменено')
-                 return redirect('main:home')
+        return redirect('home')
    else:
         form = PostForm(instance=bb)
         formset = AIFormSet(instance=bb)
    context = {'form':form, 'formset':formset}
-   return render(request, 'main/post_change.html', context)
-
+   return render(request, 'post_change.html', context)
 
 
 # def profile_delete(request, pk):

@@ -15,9 +15,10 @@
           <img class="additional-image" src="{{ ai.image.url }}">
       </div>
       {% endfor %}
-
+    
   </div>
   {% endif %}
+  <p class="text-left"> <a href="{% url 'post_change' pk=bb.pk %}">{% buttons submit='Изменить данные поста' %}{% endbuttons %}</a>
   <h4 class="mt-5">Новый комментарий</h4>
   <form method="POST">
       {% csrf_token %}
